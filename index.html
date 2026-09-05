@@ -384,13 +384,18 @@
           <h4>Regla de progresión (autorregulada)</h4>
           <p>En el último escalón de cada ejercicio, evalúa cuántas repeticiones te quedaron en reserva antes del fallo (RIR). Si completas el escalón con <strong>RIR ≥ 2</strong> durante dos sesiones seguidas, tu 1RM de referencia subió: actualízalo un <strong>+2.5%</strong> (tren superior) o <strong>+5%</strong> (tren inferior) en la pestaña «Mi 1RM». Si no logras completar las repeticiones con buena técnica, bájalo en la misma proporción.</p>
         </div>
+
+        <div class="callout" style="margin-top:12px;">
+          <h4>Cómo se reparten las dos metodologías por grupo muscular</h4>
+          <p>Desde el Bloque 2 en adelante, el programa deja de alternar fuerza/hipertrofia por bloque completo de tiempo y pasa a repartirlas por grupo muscular, todo el cuerpo entrenado como fuerza en la misma sesión: <strong>tren superior</strong> (press banca, remo, press militar, jalón) entra al ladder fuerza; <strong>tren inferior</strong> (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se queda siempre en ladder hipertrofia, que al tener más escalones y más repeticiones por escalón sostiene mayor volumen total en piernas. El Bloque 1 es la única excepción: ahí todo el cuerpo usa ladder hipertrofia por igual.</p>
+        </div>
       </div>
 
       <div class="subsection" id="cronograma">
         <div class="section-head">
           <div class="section-kicker">Periodización por bloques</div>
           <h2>24 semanas, 4 bloques</h2>
-          <p class="desc">Progresión clásica de base a especialización: primero se acumula volumen (hipertrofia), luego se transiciona con carga ondulante, luego se especializa en fuerza, y se cierra integrando todo con un test final.</p>
+          <p class="desc">Progresión clásica de base a especialización: primero se acumula volumen en todo el cuerpo (hipertrofia), luego desde la Transición el programa reparte las dos metodologías por grupo muscular — fuerza en tren superior, hipertrofia con mayor volumen en tren inferior — hasta el cierre con test final.</p>
         </div>
         <div class="timeline" id="timelineGrid"></div>
       </div>
@@ -449,7 +454,7 @@
         <div class="card panel">
           <ul class="plain">
             <li>Este plan se construyó a partir del tamizaje básico de tu ficha de entrenamiento (Sesión 1, Taller de Entrenamiento Funcional). <strong>No reemplaza una evaluación médica o kinesiológica.</strong></li>
-            <li>Detén cualquier ejercicio que reproduzca el dolor de tobillo/empeine. Trabaja siempre dentro de un rango sin dolor, especialmente en sentadilla profunda, zancada y elevación de talones.</li>
+            <li>Detén cualquier ejercicio que reproduzca el dolor de tobillo/empeine. Trabaja siempre dentro de un rango sin dolor, especialmente en sentadilla profunda, sentadilla búlgara y elevación de talones.</li>
             <li>El método ladder cercano al 100% de 1RM (bloques de fuerza) exige técnica ya consolidada. Si tienes dudas sobre la ejecución de un ejercicio nuevo, practícalo con carga baja o pide supervisión antes de acercarte al máximo.</li>
             <li>Actualiza tu 1RM en cada semana de retest (1, 8, 12, 20 y 24). Entrenar con un 1RM desactualizado hace que los porcentajes pierdan precisión.</li>
             <li>Las semanas de deload (8 y 20) son parte del plan, no un extra opcional.</li>
@@ -566,21 +571,21 @@
   };
 
   var EXERCISES = {
-    squat:    { name:"Sentadilla goblet", en:"Goblet Squat", patron:"Rodilla (bilateral)", musculos:"Cuádriceps, glúteo, core", icon:"squat", loaded:true,
-      cues:["Pecho alto, rodillas siguen la dirección de los pies","Baja hasta donde tu movilidad lo permita sin dolor","Empuja el piso con toda la planta del pie"] },
+    squat:    { name:"Sentadilla libre", en:"Back Squat", patron:"Rodilla (bilateral)", musculos:"Cuádriceps, glúteo, core", icon:"squat", loaded:true,
+      cues:["Barra apoyada sobre la espalda alta, agarre firme y codos abajo","Pecho alto, rodillas siguen la dirección de los pies","Baja hasta donde tu movilidad lo permita sin dolor, empuja el piso con toda la planta del pie al subir"] },
     bench:    { name:"Press de banca con mancuernas", en:"Dumbbell Bench Press", patron:"Empuje horizontal", musculos:"Pectoral, tríceps, deltoide anterior", icon:"pushh", loaded:true,
       cues:["Omóplatos retraídos y fijos en el banco","Baja las mancuernas hasta la altura del pecho, controlada","Empuja sin bloquear el codo de golpe"] },
     row:      { name:"Remo con mancuerna a un brazo", en:"One-Arm Dumbbell Row", patron:"Tracción horizontal", musculos:"Dorsal, romboides, bíceps", icon:"pullh", loaded:true,
       cues:["Espalda neutra, apoyo en banco","Codo hacia atrás, no hacia arriba","Controla la fase excéntrica"] },
-    lunge:    { name:"Zancada", en:"Dumbbell Lunge", patron:"Rodilla (unilateral)", musculos:"Cuádriceps, glúteo", icon:"squat", loaded:true, safety:"tobillo",
-      cues:["Tronco erguido durante todo el recorrido","Rodilla de atrás desciende sin golpear el piso","Si sientes dolor en el empeine del pie de apoyo, acorta el paso o reduce el rango"] },
+    bulgarian:{ name:"Sentadilla búlgara", en:"Bulgarian Split Squat", patron:"Rodilla (unilateral)", musculos:"Cuádriceps, glúteo", icon:"squat", loaded:true, safety:"tobillo",
+      cues:["Pie trasero elevado en un banco, apoyo solo en la punta del pie","Tronco erguido, la rodilla delantera desciende en línea con el pie de apoyo","Si sientes dolor en el empeine del pie delantero al bajar, acorta el rango o usa un apoyo más bajo"] },
     curl:     { name:"Curl de bíceps con mancuernas", en:"Dumbbell Bicep Curl", patron:"Aislado — codo", musculos:"Bíceps", icon:"iso", loaded:true,
       cues:["Codos fijos junto al torso","Sin balanceo del cuerpo para impulsar el peso","Controla la bajada (2–3 segundos)"] },
     plank:    { name:"Plancha", en:"Plank", patron:"Core (anti-extensión)", musculos:"Recto abdominal, transverso", icon:"core", loaded:false,
       cues:["Línea recta de hombro a talón","Glúteos y abdomen activos","Respira, no aguantes el aire"],
       bw:{1:{sets:3,detail:"30–40 seg"}, 2:{sets:3,detail:"40–50 seg"}, 3:{sets:3,detail:"45–60 seg"}, 4:{sets:3,detail:"45–60 seg (mantener)"}} },
-    rdl:      { name:"Peso muerto rumano", en:"Romanian Deadlift", patron:"Bisagra de cadera", musculos:"Isquiotibiales, glúteo, lumbar", icon:"hinge", loaded:true, capFuerza:93,
-      cues:["Barra/mancuernas pegadas a las piernas","Bisagra desde la cadera, espalda neutra","Rodillas con flexión mínima y fija","Es el único ejercicio de bisagra del programa: en bloques de fuerza su tope se capa en 93% 1RM (nunca 96–99%) por seguridad lumbar"] },
+    rdl:      { name:"Peso muerto rumano", en:"Romanian Deadlift", patron:"Bisagra de cadera", musculos:"Isquiotibiales, glúteo, lumbar", icon:"hinge", loaded:true,
+      cues:["Barra/mancuernas pegadas a las piernas","Bisagra desde la cadera, espalda neutra","Rodillas con flexión mínima y fija","Es el único ejercicio de bisagra del programa: se mantiene siempre en ladder hipertrofia (60–75% 1RM), nunca sube al ladder fuerza, por seguridad lumbar"] },
     ohp:      { name:"Press militar con mancuernas", en:"Dumbbell Overhead Press", patron:"Empuje vertical", musculos:"Deltoides, tríceps", icon:"pushv", loaded:true,
       cues:["Core apretado, sin arquear la lumbar en exceso","Trayectoria casi vertical de la mancuerna","Exhala al empujar arriba"] },
     latpull:  { name:"Jalón al pecho", en:"Lat Pulldown", patron:"Tracción vertical", musculos:"Dorsal, bíceps", icon:"pullv", loaded:true,
@@ -596,23 +601,29 @@
       bw:{1:{sets:3,detail:"12–15 reps por lado"}, 2:{sets:3,detail:"15 reps por lado"}, 3:{sets:3,detail:"15–20 reps por lado"}, 4:{sets:3,detail:"15–20 reps por lado (mantener)"}} }
   };
 
+  // mode "hip" = todo el cuerpo en ladder hipertrofia (Bloque 1).
+  // mode "split" = tren superior en ladder fuerza, tren inferior se queda en
+  // ladder hipertrofia (más volumen total: 4 escalones 60-75% vs. 5 escalones
+  // 85-100%) — Bloques 2-4. El tren inferior NUNCA usa ladder fuerza en este plan.
   function dayFull(){
-    var buildA = function(ladderForCompounds){
+    var buildA = function(mode){
+      var upper = (mode==="split") ? "fuerza" : "hipertrofia";
       return [
-        {id:"squat", ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
-        {id:"rdl",   ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
-        {id:"bench", ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
-        {id:"row",   ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
+        {id:"squat", ladder:"hipertrofia"},
+        {id:"rdl",   ladder:"hipertrofia"},
+        {id:"bench", ladder:upper},
+        {id:"row",   ladder:upper},
         {id:"curl",  ladder:"hipertrofia"},
         {id:"plank", ladder:null}
       ];
     };
-    var buildB = function(ladderForCompounds){
+    var buildB = function(mode){
+      var upper = (mode==="split") ? "fuerza" : "hipertrofia";
       return [
-        {id:"lunge",     ladder:"hipertrofia"},
-        {id:"hipthrust", ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
-        {id:"ohp",       ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
-        {id:"latpull",   ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
+        {id:"bulgarian", ladder:"hipertrofia"},
+        {id:"hipthrust", ladder:"hipertrofia"},
+        {id:"ohp",       ladder:upper},
+        {id:"latpull",   ladder:upper},
         {id:"tricep",    ladder:"hipertrofia"},
         {id:"calf",      ladder:"hipertrofia"},
         {id:"core",      ladder:null}
@@ -631,50 +642,51 @@
 
   var BLOCKS = [
     { id:1, key:"acumulacion", nombre:"Acumulación", sub:"Hipertrofia sarcoplasmática", weeks:"Semanas 1–8", weekStart:1, weekEnd:8, color:"amber",
-      resumen:"Base de volumen. Todo el trabajo cargado usa ladder hipertrofia (60–75% 1RM). Semana 1: test de 1RM inicial. Semana 8: deload (–50% volumen) + retest.",
+      resumen:"Base de volumen. Todo el trabajo cargado usa ladder hipertrofia (60–75% 1RM), en todo el cuerpo. Semana 1: test de 1RM inicial. Semana 8: deload (–50% volumen) + retest.",
       progresion:"Cada 2 semanas, si completas el escalón de 75% con RIR≥2 durante 2 sesiones seguidas, sube el 1RM de referencia +2.5% (tren superior) / +5% (tren inferior).",
       dias:[
-        {id:"A", weekday:"Día 1 y 5", short:"Full Body A", ladderTag:"hipertrofia", nombre:"Día 1 y 5 · Full Body A", ej:DF.A("hip")},
-        {id:"B", weekday:"Día 2 y 6", short:"Full Body B", ladderTag:"hipertrofia", nombre:"Día 2 y 6 · Full Body B", ej:DF.B("hip")}
+        {id:"A", weekday:"Día 1 y 4", short:"Full Body A", ladderTag:"hipertrofia", nombre:"Día 1 y 4 · Full Body A", ej:DF.A("hip")},
+        {id:"B", weekday:"Día 2 y 5", short:"Full Body B", ladderTag:"hipertrofia", nombre:"Día 2 y 5 · Full Body B", ej:DF.B("hip")}
       ] },
-    { id:2, key:"transicion", nombre:"Transición", sub:"Ondulante (DUP)", weeks:"Semanas 9–12", weekStart:9, weekEnd:12, color:"violet",
-      resumen:"Puente hacia el bloque de fuerza. Cada semana, A y B se repiten una vez con ladder fuerza en los compuestos (peso muerto rumano capado a 93%) y una vez con ladder hipertrofia.",
-      progresion:"El tope de los días de fuerza ondula 90% → 93% → 96% → 99% en las 4 semanas del bloque (semana 12 = tope 99%, coincide con el retest). Sube el 1RM de referencia +2.5–5% cuando el tope de esa semana se complete con técnica limpia. En los días de hipertrofia, misma regla que el Bloque 1.",
+    { id:2, key:"transicion", nombre:"Transición", sub:"Fuerza (tren sup.) + hipertrofia (tren inf.)", weeks:"Semanas 9–12", weekStart:9, weekEnd:12, color:"violet",
+      resumen:"Puente hacia el bloque de fuerza: desde aquí el programa deja de repartir fuerza/hipertrofia por bloque completo y pasa a repartirlo por grupo muscular, igual los tres días de entrenamiento del bloque. Tren superior (press banca, remo, press militar, jalón) entra al ladder fuerza (85–100% 1RM). Tren inferior (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se mantiene en ladder hipertrofia (60–75% 1RM): al tener más escalones y más repeticiones por escalón, sostiene mayor volumen total en piernas que el tren superior en este mismo bloque.",
+      progresion:"El tope de tren superior ondula 90% → 93% → 96% → 99% en las 4 semanas del bloque (semana 12 = tope 99%, coincide con el retest). Sube el 1RM de referencia +2.5% (tren superior) cuando el tope de esa semana se complete con técnica limpia. Tren inferior sigue la regla de autorregulación del ladder hipertrofia (RIR≥2 en el último escalón → +5%).",
       dias:[
-        {id:"A1", weekday:"Día 1", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 · Full Body A (fuerza en compuestos)", ej:DF.A("fuerza")},
-        {id:"B1", weekday:"Día 2", short:"Full Body B", ladderTag:"hipertrofia", nombre:"Día 2 · Full Body B (hipertrofia)", ej:DF.B("hip")},
-        {id:"A2", weekday:"Día 5", short:"Full Body A", ladderTag:"hipertrofia", nombre:"Día 5 · Full Body A (hipertrofia)", ej:DF.A("hip")},
-        {id:"B2", weekday:"Día 6", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 6 · Full Body B (fuerza en compuestos)", ej:DF.B("fuerza")}
+        {id:"A", weekday:"Día 1 y 4", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 y 4 · Full Body A", ej:DF.A("split")},
+        {id:"B", weekday:"Día 2 y 5", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 2 y 5 · Full Body B", ej:DF.B("split")}
       ] },
-    { id:3, key:"especializacion", nombre:"Especialización", sub:"Fuerza sarcomérica", weeks:"Semanas 13–20", weekStart:13, weekEnd:20, color:"accent",
-      resumen:"Los compuestos con base de apoyo estable (sentadilla, press banca, remo con apoyo en banco, peso muerto rumano, press militar, jalón, hip thrust) usan ladder fuerza. La zancada, el curl, la extensión de tríceps y los gemelos se quedan siempre en ladder hipertrofia: cargan una base inestable a una pierna (zancada) o son aislamiento articular de bajo retorno para trabajar cerca del máximo. El peso muerto rumano usa ladder fuerza pero con tope propio de 93% (nunca 96–99%) por ser el único ejercicio de bisagra del programa. Semana 20: deload + retest.",
-      progresion:"Misma regla de autorregulación. Además, el tope real de intensidad ondula semana a semana dentro del bloque (90% → 93% → 96% → 99%, repitiendo cada 4 semanas) en vez de exigir 99% en cada sesión — revisa el tope exacto de hoy en la pestaña «Hoy». Prioriza técnica sobre completar el escalón.",
+    { id:3, key:"especializacion", nombre:"Especialización", sub:"Fuerza (tren sup.) + hipertrofia (tren inf.)", weeks:"Semanas 13–20", weekStart:13, weekEnd:20, color:"accent",
+      resumen:"Mismo reparto por grupo muscular del Bloque 2, ahora con el tope de tren superior llegando a su rango más alto. Tren superior (press banca, remo, press militar, jalón) usa ladder fuerza. Tren inferior (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se mantiene en ladder hipertrofia para sostener mayor volumen — el peso muerto rumano nunca sube al ladder fuerza, por seguridad lumbar. El curl y la extensión de tríceps se quedan siempre en ladder hipertrofia (aislamiento articular de bajo retorno para trabajar cerca del máximo). Semana 20: deload + retest.",
+      progresion:"Misma regla de autorregulación por ejercicio. El tope real de tren superior ondula semana a semana dentro del bloque (90% → 93% → 96% → 99%, repitiendo cada 4 semanas) en vez de exigir 99% en cada sesión — revisa el tope exacto de hoy en la pestaña «Hoy». Prioriza técnica sobre completar el escalón.",
       dias:[
-        {id:"A", weekday:"Día 1 y 5", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 y 5 · Full Body A", ej:DF.A("fuerza")},
-        {id:"B", weekday:"Día 2 y 6", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 2 y 6 · Full Body B", ej:DF.B("fuerza")}
+        {id:"A", weekday:"Día 1 y 4", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 y 4 · Full Body A", ej:DF.A("split")},
+        {id:"B", weekday:"Día 2 y 5", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 2 y 5 · Full Body B", ej:DF.B("split")}
       ] },
-    { id:4, key:"integracion", nombre:"Integración", sub:"Mixto + test final", weeks:"Semanas 21–24", weekStart:21, weekEnd:24, color:"teal",
-      resumen:"Mismo esquema ondulante del Bloque 2, para consolidar ambas cualidades antes del cierre. La semana 24 es el retest final de 1RM y el cierre del programa.",
-      progresion:"Mismo tope ondulante 90% → 93% → 96% → 99% (semana 24 = tope 99%, coincide con el retest final). Sin subidas agresivas de 1RM en la semana 24: es semana de test, no de progresión.",
+    { id:4, key:"integracion", nombre:"Integración", sub:"Fuerza (tren sup.) + hipertrofia (tren inf.)", weeks:"Semanas 21–24", weekStart:21, weekEnd:24, color:"teal",
+      resumen:"Mismo esquema del Bloque 2-3, para consolidar ambas cualidades antes del cierre: tren superior en ladder fuerza, tren inferior en ladder hipertrofia con más volumen. La semana 24 es el retest final de 1RM y el cierre del programa.",
+      progresion:"Mismo tope ondulante de tren superior 90% → 93% → 96% → 99% (semana 24 = tope 99%, coincide con el retest final). Sin subidas agresivas de 1RM en la semana 24: es semana de test, no de progresión.",
       dias:[
-        {id:"A1", weekday:"Día 1", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 · Full Body A (fuerza en compuestos)", ej:DF.A("fuerza")},
-        {id:"B1", weekday:"Día 2", short:"Full Body B", ladderTag:"hipertrofia", nombre:"Día 2 · Full Body B (hipertrofia)", ej:DF.B("hip")},
-        {id:"A2", weekday:"Día 5", short:"Full Body A", ladderTag:"hipertrofia", nombre:"Día 5 · Full Body A (hipertrofia)", ej:DF.A("hip")},
-        {id:"B2", weekday:"Día 6", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 6 · Full Body B (fuerza en compuestos)", ej:DF.B("fuerza")}
+        {id:"A", weekday:"Día 1 y 4", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 y 4 · Full Body A", ej:DF.A("split")},
+        {id:"B", weekday:"Día 2 y 5", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 2 y 5 · Full Body B", ej:DF.B("split")}
       ] }
   ];
 
   var DELOAD_WEEKS = [8,20];
   var RETEST_WEEKS = [1,8,12,20,24];
 
+  // Única fuente de verdad del calendario semanal: slot "A"/"B" referencia el id
+  // del día del bloque activo (ver BLOCKS más abajo, todos usan ids "A" y "B").
+  // resolveSession() lee esto directamente — no hay una segunda copia hardcodeada
+  // en el motor. Días preferidos: lunes/martes gym, miércoles descanso,
+  // jueves/viernes gym, sábado descanso, domingo movilidad/cardio.
   var WEEK_TEMPLATE = [
-    {num:"Día 1", name:"Gimnasio · Full Body A", tag:"gym"},
-    {num:"Día 2", name:"Gimnasio · Full Body B", tag:"gym"},
-    {num:"Día 3", name:"Descanso", tag:"rest"},
-    {num:"Día 4", name:"Casa · Movilidad + cardio opcional", tag:"home"},
-    {num:"Día 5", name:"Gimnasio · Full Body A", tag:"gym"},
-    {num:"Día 6", name:"Gimnasio · Full Body B", tag:"gym"},
-    {num:"Día 7", name:"Descanso", tag:"rest"}
+    {num:"Día 1", name:"Gimnasio · Full Body A", tag:"gym", slot:"A"},
+    {num:"Día 2", name:"Gimnasio · Full Body B", tag:"gym", slot:"B"},
+    {num:"Día 3", name:"Descanso", tag:"rest", slot:null},
+    {num:"Día 4", name:"Gimnasio · Full Body A", tag:"gym", slot:"A"},
+    {num:"Día 5", name:"Gimnasio · Full Body B", tag:"gym", slot:"B"},
+    {num:"Día 6", name:"Descanso", tag:"rest", slot:null},
+    {num:"Día 7", name:"Casa · Movilidad + cardio opcional", tag:"home", slot:null}
   ];
 
   var MOBILITY = [
@@ -934,18 +946,15 @@
   function weekFromProgramDay(pd){ return Math.ceil(pd/7); }
   function dowFromProgramDay(pd){ return ((pd-1)%7)+1; } // 1..7 within the training week
 
-  // Resolves which session happens on a given day-of-week within a given block:
-  // dow 1&5 -> the block's "A" slot, dow 2&6 -> the block's "B" slot, dow 3&7 -> rest, dow 4 -> home.
-  // Blocks with 2 day-variants (1,3) reuse the same A/B twice a week; blocks with 4
-  // variants (2,4) have a distinct fuerza/hipertrofia version for each occurrence.
+  // Resolves which session happens on a given day-of-week within a given block.
+  // Lee el slot directamente de WEEK_TEMPLATE (dow 1-7) en vez de duplicar el
+  // calendario aquí — WEEK_TEMPLATE es la única fuente de verdad del día de la
+  // semana. Todos los bloques usan ids "A"/"B" para sus dos sesiones de gimnasio.
   function resolveSession(block, dow){
-    if(dow===3 || dow===7) return {type:"rest"};
-    if(dow===4) return {type:"casa"};
-    var idMap = (block.dias.length===2)
-      ? {1:"A",2:"B",5:"A",6:"B"}
-      : {1:"A1",2:"B1",5:"A2",6:"B2"};
-    var dayId = idMap[dow];
-    var day = block.dias.filter(function(d){ return d.id===dayId; })[0];
+    var tmpl = WEEK_TEMPLATE[dow-1];
+    if(tmpl.tag==="rest") return {type:"rest"};
+    if(tmpl.tag==="home") return {type:"casa"};
+    var day = block.dias.filter(function(d){ return d.id===tmpl.slot; })[0];
     return {type:"gym", day:day};
   }
 
