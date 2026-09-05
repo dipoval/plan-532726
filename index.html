@@ -363,7 +363,7 @@
               </table>
             </div>
             <p style="margin-top:10px; font-size:12px; color:var(--ink-2);">Descanso entre escalones: <strong>3–4 min</strong>. Solo en compuestos principales y en los bloques donde corresponde.</p>
-            <p style="margin-top:6px; font-size:12px; color:var(--ink-2);">El tope real <strong>ondula semana a semana</strong> dentro de cada bloque de fuerza (90% → 93% → 96% → 99%, repitiendo cada 4 semanas) — no se exige 99% en cada sesión. El peso muerto rumano nunca pasa de 93%. El tope exacto de esta semana aparece en la pestaña «Hoy».</p>
+            <p style="margin-top:6px; font-size:12px; color:var(--ink-2);">El tope real <strong>ondula semana a semana</strong> dentro de cada bloque de fuerza (90% → 93% → 96% → 99%, repitiendo cada 4 semanas) — no se exige 99% en cada sesión. El tope exacto de esta semana aparece en la pestaña «Hoy».</p>
           </div>
 
           <div class="card panel">
@@ -380,14 +380,27 @@
           </div>
         </div>
 
+        <div class="card panel" style="margin-top:14px;">
+          <span class="chip chip-cardio">Tensión moderada · aislamiento seguro</span>
+          <h3 style="margin-top:10px; font-size:16px;">Solo para curl y extensión de tríceps (Bloques 2–4)</h3>
+          <p style="margin-top:8px; color:var(--ink-2); font-size:13.5px;">Son ejercicios de aislamiento de una sola articulación pequeña (codo). Llevarlos a series de 1–3 reps cerca del 100% 1RM, como el resto de tren superior, sube el riesgo articular sin beneficio extra real. Este nivel intermedio (72–80% 1RM) conserva el estímulo de tensión sin ese riesgo.</p>
+          <div class="tbl-scroll" style="margin-top:14px; max-width:340px;">
+            <table>
+              <thead><tr><th>Escalón</th><th class="num">Reps</th><th class="num">% 1RM</th></tr></thead>
+              <tbody id="ladderRefTension"></tbody>
+            </table>
+          </div>
+          <p style="margin-top:10px; font-size:12px; color:var(--ink-2);">Descanso entre escalones: <strong>90–120 seg</strong>. Reemplaza al ladder fuerza solo en curl y extensión de tríceps — el resto de tren superior sí usa el ladder fuerza completo.</p>
+        </div>
+
         <div class="callout callout-accent" style="margin-top:16px;">
           <h4>Regla de progresión (autorregulada)</h4>
           <p>En el último escalón de cada ejercicio, evalúa cuántas repeticiones te quedaron en reserva antes del fallo (RIR). Si completas el escalón con <strong>RIR ≥ 2</strong> durante dos sesiones seguidas, tu 1RM de referencia subió: actualízalo un <strong>+2.5%</strong> (tren superior) o <strong>+5%</strong> (tren inferior) en la pestaña «Mi 1RM». Si no logras completar las repeticiones con buena técnica, bájalo en la misma proporción.</p>
         </div>
 
         <div class="callout" style="margin-top:12px;">
-          <h4>Cómo se reparten las dos metodologías por grupo muscular</h4>
-          <p>Desde el Bloque 2 en adelante, el programa deja de alternar fuerza/hipertrofia por bloque completo de tiempo y pasa a repartirlas por grupo muscular, todo el cuerpo entrenado como fuerza en la misma sesión: <strong>tren superior</strong> (press banca, remo, press militar, jalón) entra al ladder fuerza; <strong>tren inferior</strong> (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se queda siempre en ladder hipertrofia, que al tener más escalones y más repeticiones por escalón sostiene mayor volumen total en piernas. El Bloque 1 es la única excepción: ahí todo el cuerpo usa ladder hipertrofia por igual.</p>
+          <h4>Cómo se reparten las metodologías por grupo muscular</h4>
+          <p>Desde el Bloque 2 en adelante, el programa deja de alternar fuerza/hipertrofia por bloque completo de tiempo y pasa a repartirlas por grupo muscular: <strong>tren superior</strong> — solo los compuestos (press banca, remo, press militar, jalón) — entra al ladder fuerza; <strong>tren inferior</strong> (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se queda siempre en ladder hipertrofia, que al tener más escalones y más repeticiones por escalón sostiene mayor volumen total en piernas. El curl y la extensión de tríceps — aislamiento de codo, no compuestos — no siguen ninguna de las dos reglas anteriores: usan un <strong>tercer nivel, tensión moderada</strong> (72–80% 1RM), que mantiene el estímulo de tensión de "fuerza" sin acercarse a series de 1–3 reps cerca del máximo en una sola articulación pequeña (ver aviso en la ficha de cada ejercicio). El Bloque 1 es la única excepción a todo esto: ahí todo el cuerpo usa ladder hipertrofia por igual.</p>
         </div>
       </div>
 
@@ -558,8 +571,13 @@
 
   /* ================= DATA ================= */
   var LADDER = {
-    fuerza:      [ {reps:5,pct:85}, {reps:3,pct:90}, {reps:2,pct:93}, {reps:1,pct:96}, {reps:1,pct:99} ],
-    hipertrofia: [ {reps:12,pct:60}, {reps:10,pct:65}, {reps:8,pct:70}, {reps:6,pct:75} ]
+    fuerza:          [ {reps:5,pct:85}, {reps:3,pct:90}, {reps:2,pct:93}, {reps:1,pct:96}, {reps:1,pct:99} ],
+    hipertrofia:     [ {reps:12,pct:60}, {reps:10,pct:65}, {reps:8,pct:70}, {reps:6,pct:75} ],
+    // Tercer nivel, solo para aislamiento de codo (curl, extensión de tríceps) en
+    // Bloques 2-4: mantiene el estímulo de tensión de "fuerza" sin acercarse a
+    // series de 1-3 reps cerca del 100% 1RM en una sola articulación pequeña —
+    // ver SAFETY_MESSAGES.aislamiento_codo y §metodologia.
+    tensionModerada: [ {reps:8,pct:72}, {reps:6,pct:76}, {reps:5,pct:80} ]
   };
 
   var HOME_DAY_WARNING = { title:"Prioridad: tobillo", text:"Toda la movilidad de tobillo, siempre dentro de un rango sin dolor. Si el dolor persiste o empeora, consulta a un profesional de la salud." };
@@ -567,7 +585,8 @@
   var STORAGE_NS = "antonia_";
 
   var SAFETY_MESSAGES = {
-    tobillo: { title:"Precaución tobillo", text:"respeta siempre un rango sin dolor." }
+    tobillo: { title:"Precaución tobillo", text:"respeta siempre un rango sin dolor." },
+    aislamiento_codo: { title:"Por qué este ejercicio no llega a ladder fuerza", text:"Es un ejercicio de aislamiento de una sola articulación (codo): llevarlo a series de 1–3 repeticiones cerca del 100% 1RM sube el riesgo articular con poco beneficio extra. Desde el Bloque 2 usa un tercer nivel de carga (72–80% 1RM, 5–8 reps) que mantiene el estímulo de tensión sin ese riesgo." }
   };
 
   var EXERCISES = {
@@ -579,7 +598,7 @@
       cues:["Espalda neutra, apoyo en banco","Codo hacia atrás, no hacia arriba","Controla la fase excéntrica"] },
     bulgarian:{ name:"Sentadilla búlgara", en:"Bulgarian Split Squat", patron:"Rodilla (unilateral)", musculos:"Cuádriceps, glúteo", icon:"squat", loaded:true, safety:"tobillo",
       cues:["Pie trasero elevado en un banco, apoyo solo en la punta del pie","Tronco erguido, la rodilla delantera desciende en línea con el pie de apoyo","Si sientes dolor en el empeine del pie delantero al bajar, acorta el rango o usa un apoyo más bajo"] },
-    curl:     { name:"Curl de bíceps con mancuernas", en:"Dumbbell Bicep Curl", patron:"Aislado — codo", musculos:"Bíceps", icon:"iso", loaded:true,
+    curl:     { name:"Curl de bíceps con mancuernas", en:"Dumbbell Bicep Curl", patron:"Aislado — codo", musculos:"Bíceps", icon:"iso", loaded:true, safety:"aislamiento_codo",
       cues:["Codos fijos junto al torso","Sin balanceo del cuerpo para impulsar el peso","Controla la bajada (2–3 segundos)"] },
     plank:    { name:"Plancha", en:"Plank", patron:"Core (anti-extensión)", musculos:"Recto abdominal, transverso", icon:"core", loaded:false,
       cues:["Línea recta de hombro a talón","Glúteos y abdomen activos","Respira, no aguantes el aire"],
@@ -592,7 +611,7 @@
       cues:["Pecho alto, leve inclinación hacia atrás","Barra hacia la clavícula, no hacia el cuello","Controla el regreso, no dejes caer el peso"] },
     hipthrust:{ name:"Hip thrust con barra", en:"Barbell Hip Thrust", patron:"Extensión de cadera", musculos:"Glúteo", icon:"hipext", loaded:true,
       cues:["Barra sobre la cadera, usa protector/almohadilla","Mentón metido, sin hiperextender la lumbar arriba","Aprieta el glúteo con fuerza en el tope"] },
-    tricep:   { name:"Extensión de tríceps en polea", en:"Tricep Pushdown", patron:"Aislado — codo", musculos:"Tríceps", icon:"iso", loaded:true,
+    tricep:   { name:"Extensión de tríceps en polea", en:"Tricep Pushdown", patron:"Aislado — codo", musculos:"Tríceps", icon:"iso", loaded:true, safety:"aislamiento_codo",
       cues:["Codos fijos junto al torso","Extiende completo sin bloquear bruscamente","No uses impulso del hombro"] },
     calf:     { name:"Elevación de talones de pie", en:"Standing Calf Raise", patron:"Tobillo", musculos:"Gemelos", icon:"calf", loaded:true, safety:"tobillo",
       cues:["Sube hasta la punta del pie con control","Baja solo hasta donde NO sientas dolor en el empeine","Si aparece dolor, reduce el rango — nunca fuerces"] },
@@ -608,23 +627,25 @@
   function dayFull(){
     var buildA = function(mode){
       var upper = (mode==="split") ? "fuerza" : "hipertrofia";
+      var iso   = (mode==="split") ? "tensionModerada" : "hipertrofia";
       return [
         {id:"squat", ladder:"hipertrofia"},
         {id:"rdl",   ladder:"hipertrofia"},
         {id:"bench", ladder:upper},
         {id:"row",   ladder:upper},
-        {id:"curl",  ladder:"hipertrofia"},
+        {id:"curl",  ladder:iso},
         {id:"plank", ladder:null}
       ];
     };
     var buildB = function(mode){
       var upper = (mode==="split") ? "fuerza" : "hipertrofia";
+      var iso   = (mode==="split") ? "tensionModerada" : "hipertrofia";
       return [
         {id:"bulgarian", ladder:"hipertrofia"},
         {id:"hipthrust", ladder:"hipertrofia"},
         {id:"ohp",       ladder:upper},
         {id:"latpull",   ladder:upper},
-        {id:"tricep",    ladder:"hipertrofia"},
+        {id:"tricep",    ladder:iso},
         {id:"calf",      ladder:"hipertrofia"},
         {id:"core",      ladder:null}
       ];
@@ -656,7 +677,7 @@
         {id:"B", weekday:"Día 2 y 5", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 2 y 5 · Full Body B", ej:DF.B("split")}
       ] },
     { id:3, key:"especializacion", nombre:"Especialización", sub:"Fuerza (tren sup.) + hipertrofia (tren inf.)", weeks:"Semanas 13–20", weekStart:13, weekEnd:20, color:"accent",
-      resumen:"Mismo reparto por grupo muscular del Bloque 2, ahora con el tope de tren superior llegando a su rango más alto. Tren superior (press banca, remo, press militar, jalón) usa ladder fuerza. Tren inferior (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se mantiene en ladder hipertrofia para sostener mayor volumen — el peso muerto rumano nunca sube al ladder fuerza, por seguridad lumbar. El curl y la extensión de tríceps se quedan siempre en ladder hipertrofia (aislamiento articular de bajo retorno para trabajar cerca del máximo). Semana 20: deload + retest.",
+      resumen:"Mismo reparto por grupo muscular del Bloque 2, ahora con el tope de tren superior llegando a su rango más alto. Tren superior (press banca, remo, press militar, jalón) usa ladder fuerza. Tren inferior (sentadilla libre, peso muerto rumano, búlgara, hip thrust, gemelos) se mantiene en ladder hipertrofia para sostener mayor volumen — el peso muerto rumano nunca sube al ladder fuerza, por seguridad lumbar. El curl y la extensión de tríceps usan el tercer nivel de tensión moderada (72–80% 1RM) en vez de ladder fuerza — son aislamiento de una sola articulación pequeña (codo), y llevarlos a series de 1–3 reps cerca del máximo sube el riesgo articular con poco beneficio extra. Semana 20: deload + retest.",
       progresion:"Misma regla de autorregulación por ejercicio. El tope real de tren superior ondula semana a semana dentro del bloque (90% → 93% → 96% → 99%, repitiendo cada 4 semanas) en vez de exigir 99% en cada sesión — revisa el tope exacto de hoy en la pestaña «Hoy». Prioriza técnica sobre completar el escalón.",
       dias:[
         {id:"A", weekday:"Día 1 y 4", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 y 4 · Full Body A", ej:DF.A("split")},
@@ -738,7 +759,8 @@
     return FUERZA_WAVE[offset];
   }
   // Returns the ladder rungs actually prescribed, applying (a) a per-exercise permanent
-  // safety cap (e.g. RDL never exceeds 93%) and (b) the weekly undulating top for fuerza
+  // safety cap (via EXERCISES[id].capFuerza, e.g. a hinge exercise capped at 93%) and
+  // (b) the weekly undulating top for fuerza
   // ladder (90/93/96/99, only reaching 99% once every 4 weeks). weekTopPct=100 means
   // "no weekly wave truncation" — used for the static Plan Completo reference tables,
   // where only the permanent per-exercise cap still applies.
@@ -806,7 +828,8 @@
     var items = day.ej.map(function(row){
       var e = EXERCISES[row.id];
     if(!e) return "";
-      var ladderChip = row.ladder===null ? "" : (row.ladder==="fuerza" ? '<span class="chip chip-fuerza">Fuerza</span>' : '<span class="chip chip-hipertrofia">Hipertrofia</span>');
+      var LADDER_CHIP_HTML = { fuerza:'<span class="chip chip-fuerza">Fuerza</span>', hipertrofia:'<span class="chip chip-hipertrofia">Hipertrofia</span>', tensionModerada:'<span class="chip chip-cardio">Tensión moderada</span>' };
+      var ladderChip = row.ladder===null ? "" : (LADDER_CHIP_HTML[row.ladder] || "");
       return '<div class="card panel" style="margin-bottom:10px;">'+
         '<div class="ex-name-cell">'+ svgIcon(e.icon,"ex-icon") +
           '<div style="flex:1;"><span class="ex-name">'+e.name+'<span class="en">'+e.en+' · '+e.musculos+'</span></span></div>'+
@@ -1151,6 +1174,7 @@
   function init(){
     renderLadderRefTable("ladderRefFuerza","fuerza");
     renderLadderRefTable("ladderRefHipertrofia","hipertrofia");
+    renderLadderRefTable("ladderRefTension","tensionModerada");
     renderRMList();
     renderRMLog();
     renderTimeline();
