@@ -495,9 +495,9 @@
             <tbody id="mobilityTable"></tbody>
           </table>
         </div>
-        <div class="callout callout-danger" style="margin-top:16px;">
-          <h4>⚠ Prioridad: tobillo</h4>
-          <p>Tu ficha reporta dolor en el empeine al elongar en extensión (dorsiflexión) de tobillo. Trabaja siempre dentro de un rango sin dolor — nunca fuerces el rango para "ganar más". Si el dolor persiste, aumenta o aparece uno nuevo, consulta a un profesional de la salud antes de seguir cargando el tobillo.</p>
+        <div class="callout callout-accent" style="margin-top:16px;">
+          <h4>Tu tobillo marca el rango</h4>
+          <p>Contaste en tu ficha dolor en el empeine al llevar la rodilla por delante del pie (dorsiflexión). Por eso toda la movilidad de tobillo llega hasta donde se siente bien ese día y nunca se fuerza para «ganar más»: el rango se gana repitiendo dentro de lo cómodo, no empujando el final.</p>
         </div>
       </div>
 
@@ -609,7 +609,7 @@
   "use strict";
 
   /* ================= DATA ================= */
-  var HOME_DAY_WARNING = { title:"Prioridad: tobillo", text:"Toda la movilidad de tobillo, siempre dentro de un rango sin dolor. Si el dolor persiste o empeora, consulta a un profesional de la salud." };
+  var HOME_DAY_WARNING = { title:"Tu tobillo marca el rango", text:"Toda la movilidad de tobillo de hoy llega hasta donde se siente bien, sin forzar el final del recorrido." };
 
   // Texto y comportamiento propios de este plan que el MOTOR compartido lee
   // en vez de tener hardcodeado — ver docs/superpowers/plans/2026-09-09-motor-modularizado.md.
@@ -624,16 +624,16 @@
     // migración del MOTOR solo corre donde esta marca está en true.
     migrarPrefijoAntiguo: true,
     cardioOptional: true,
-    safetyFlagWarnGlyph: true,
-    homeWarningClass: "callout-danger",
-    homeWarningGlyph: true
+    safetyFlagWarnGlyph: false,
+    homeWarningClass: "callout-accent",
+    homeWarningGlyph: false
   };
 
   // Id del plan, no el nombre: este archivo se publica y el prefijo queda a la vista.
   var STORAGE_NS = "p532726_";
 
   var SAFETY_MESSAGES = {
-    tobillo: { title:"Precaución tobillo", text:"respeta siempre un rango sin dolor." },
+    tobillo: { title:"Tu tobillo marca el rango", text:"llega hasta donde el tobillo se siente bien ese día; si molesta, acorta el recorrido." },
     aislamiento_codo: { title:"Por qué este ejercicio no llega a ladder fuerza", text:"Es un ejercicio de aislamiento de una sola articulación (codo): llevarlo a series de 1–3 repeticiones cerca del 100% 1RM sube el riesgo articular con poco beneficio extra. Desde el Bloque 2 usa un tercer nivel de carga (72–80% 1RM, 5–8 reps) que mantiene el estímulo de tensión sin ese riesgo." }
   };
 
@@ -761,7 +761,7 @@
 
   var MOBILITY = [
     ["Todos","Auto-liberación gemelo y planta del pie (foam roller / pelota)","2 min por lado","Tejido blando de tobillo"],
-    ["Todos","Movilidad de tobillo — rodilla a la pared (knee-to-wall), rango sin dolor","3 x 10 por lado","Dorsiflexión (⚠ zona reportada)"],
+    ["Todos","Movilidad de tobillo — rodilla a la pared (knee-to-wall), rango sin dolor","3 x 10 por lado","Dorsiflexión"],
     ["Todos","Movilidad de cadera 90/90","3 x 8 por lado","Cadera"],
     ["Todos","Gato-camello + rotaciones torácicas","2 x 10","Columna torácica"],
     ["Todos","Estiramiento estático: isquios, cuádriceps, glúteo, flexor de cadera, pectoral, dorsal, cuello","2 x 30–45 seg c/u","General"],
